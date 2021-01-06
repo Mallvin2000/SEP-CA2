@@ -18,6 +18,7 @@ app.get('/api/getRetailProductByCat', function (req, res) {
     var countryId = req.query.countryId;
     product.getRetailProductByCat(cat, countryId)
         .then((result) => {
+            //console.log(result);
             res.send(result);
         })
         .catch((err) => {
