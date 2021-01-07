@@ -19,6 +19,7 @@
                     return response.json();
                 }).then(function (furniture) {
                     //set furniture details
+                    //console.log(furniture);
                     document.getElementById("imgFurniture").setAttribute('src', furniture.imageURL);
                 
                     if(memberEmail != null && memberEmail != '') {
@@ -26,8 +27,13 @@
                         + furniture.sku + '\',\'' + furniture.id + '\',' + furniture.price + ',\'' + furniture.name + '\',\''
                         + furniture.imageURL + '\')">Add To Cart</button>';
                     }
-               
+                    document.getElementById("furnitureName").innerHTML =furniture.name;
+                    document.getElementById("price").innerHTML = "$" + furniture.price + ".00";
+                    document.getElementById("description").innerHTML = furniture.description;
                     document.getElementById("categoryLink").innerHTML = furniture.category;
+                    document.getElementById("heightInfo").innerHTML = "Height: " + furniture.height;
+                    document.getElementById("lengthInfo").innerHTML = "Length: " + furniture.length;
+                    document.getElementById("widthInfo").innerHTML = "Width: " + furniture.width;
                     document.getElementById("categoryLink").setAttribute('href', '/B/' + countryPrefix
                         + '/furnitureCategory.html?cat=' + encodeURIComponent(furniture.category));
 
@@ -180,7 +186,11 @@
                                     <p class="price"><h4 class="amount" id="price"></h4></p>
                                     <strong>Description</strong>
                                     <p class="taller" id="description"></p>
-                                    <p id="furnitureInfo"></p>
+                                    <p id="furnitureInfo">
+                                        <p id="heightInfo" style="margin-bottom: 0;"></p>
+                                        <p id="lengthInfo" style="margin-bottom: 0;"></p>
+                                        <p id="widthInfo" style="margin-bottom: 0;"></p>
+                                    </p>
                                     <div class="product_meta">
                                         <span class="posted_in">Category: <a id="categoryLink" rel="tag"></a></span>
                                     </div>
